@@ -260,6 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 793686645}
   velocidadeMovimento: 5
+  laserPrefab: {fileID: 8628158358646033369, guid: 98295d080f9dadf4096d1500f4e03771, type: 3}
+  tempoEsperaTiro: 1
 --- !u!212 &793686647
 SpriteRenderer:
   m_ObjectHideFlags: 0
