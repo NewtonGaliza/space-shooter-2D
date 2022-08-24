@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1153474909845638145}
   - component: {fileID: 1153474909845638150}
   - component: {fileID: 1153474909845638147}
+  - component: {fileID: 3846574485024941792}
   m_Layer: 0
   m_Name: inimigo01
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,19 @@ MonoBehaviour:
   rigidbody: {fileID: 1153474909845638150}
   velocidadeMinima: 1
   velocidadeMaxima: 2
+--- !u!58 &3846574485024941792
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153474909845638151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.12
