@@ -12,10 +12,14 @@ public class NaveJogador : MonoBehaviour
 
     [SerializeField] private float tempoEsperaTiro;
 
+    public Transform[] posicoesArmas;
+    private Transform armaAtual;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.intervaloTiro = 0;   
+        this.intervaloTiro = 0;  
+        this.armaAtual = this.posicoesArmas[0];
     }
 
     // Update is called once per frame
@@ -41,6 +45,15 @@ public class NaveJogador : MonoBehaviour
     private void Atirar()
     {
         //criando o tio na mesma posição da nave
-        Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
+        Instantiate(this.laserPrefab, this.armaAtual.position, Quaternion.identity);
+        if(this.armaAtual == this.posicoesArmas[0])
+        {
+            this.armaAtual = this.posicoesArmas[1];
+        } 
+        else
+        {
+            this.armaAtual = this.posicoesArmas[0];
+        }
+
     }
 }
