@@ -23,4 +23,10 @@ public class Inimigo : MonoBehaviour
         //negativando a velocidadeY para o inimiog se moverr para baixo
         this.rigidbody.velocity = new Vector2(0, -this.velocidadeY);
     }
+
+    public void Destruir()
+    {
+        ControladorPontuacao.Pontuacao++;
+        Destroy(this.gameObject);
+    }
 }

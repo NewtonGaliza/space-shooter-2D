@@ -20,6 +20,7 @@ public class NaveJogador : MonoBehaviour
     {
         this.intervaloTiro = 0;  
         this.armaAtual = this.posicoesArmas[0];
+        ControladorPontuacao.Pontuacao = 0;
     }
 
     // Update is called once per frame
