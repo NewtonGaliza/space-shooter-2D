@@ -12,12 +12,15 @@ public class NaveJogador : MonoBehaviour
 
     [SerializeField] private float tempoEsperaTiro;
 
+    [SerializeField] private int vidas;
+
     public Transform[] posicoesArmas;
     private Transform armaAtual;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.vidas = 5;
         this.intervaloTiro = 0;  
         this.armaAtual = this.posicoesArmas[0];
         ControladorPontuacao.Pontuacao = 0;
@@ -55,6 +58,32 @@ public class NaveJogador : MonoBehaviour
         {
             this.armaAtual = this.posicoesArmas[0];
         }
+    }
 
+    public int Vida
+    {
+        get
+        {
+            return this.vidas;
+        }
+
+        set
+        {
+            this.vidas = value;
+            if (this.vidas < 0)
+            {
+                this.vidas = 0;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Inimigo"))
+        {
+            Vida--;
+            Inimigo inimigo = collider.GetComponent<Inimigo>();
+            inimigo.Destruir(false);
+        }
     }
 }
