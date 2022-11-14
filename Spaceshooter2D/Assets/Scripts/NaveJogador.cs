@@ -17,6 +17,8 @@ public class NaveJogador : MonoBehaviour
     public Transform[] posicoesArmas;
     private Transform armaAtual;
 
+    private FimJogo telaFimJogo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,10 @@ public class NaveJogador : MonoBehaviour
         this.intervaloTiro = 0;  
         this.armaAtual = this.posicoesArmas[0];
         ControladorPontuacao.Pontuacao = 0;
+
+        GameObject fimJogoGameObject = GameObject.FindGameObjectWithTag("TelaFimJogo");
+        this.telaFimJogo = fimJogoGameObject.GetComponent<FimJogo>();
+        this.telaFimJogo.Esconder();
     }
 
     // Update is called once per frame
@@ -70,9 +76,11 @@ public class NaveJogador : MonoBehaviour
         set
         {
             this.vidas = value;
-            if (this.vidas < 0)
+            if (this.vidas <= 0)
             {
                 this.vidas = 0;
+                this.gameObject.SetActive(false);
+                telaFimJogo.Exibir();
             }
         }
     }
