@@ -121,6 +121,7 @@ MonoBehaviour:
   rigidbody: {fileID: 1153474909845638150}
   velocidadeMinima: 1
   velocidadeMaxima: 2
+  particulaExplosaoPrefab: {fileID: 5411353334607295613, guid: e3684e4a384d2634b87f0e8a14505daf, type: 3}
 --- !u!58 &3846574485024941792
 CircleCollider2D:
   m_ObjectHideFlags: 0
