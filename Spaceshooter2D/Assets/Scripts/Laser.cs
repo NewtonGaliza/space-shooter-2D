@@ -16,7 +16,12 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Camera camera = Camera.main;
+        Vector3 posicaoCamera = camera.WorldToViewportPoint(this.transform.position);
+        if(posicaoCamera.y > 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
