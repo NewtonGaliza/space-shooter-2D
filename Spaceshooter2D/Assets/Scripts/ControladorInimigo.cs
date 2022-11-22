@@ -5,7 +5,8 @@ using UnityEngine;
 public class ControladorInimigo : MonoBehaviour
 {
     //inimigo original que será usado para copiar/criar um novo inimigo
-    public Inimigo inimigoOriginal;
+    public Inimigo inimigoPequenoPrefab;
+    public Inimigo inimigoGrandePrefab;
     private float tempoDecorrido;
 
 
@@ -32,8 +33,22 @@ public class ControladorInimigo : MonoBehaviour
             //cposicionar o inimigo no limite superior da tela
             Vector2 posicaoInimigo = new Vector2(posicaoX, posicaoMaxima.y);
 
+            Inimigo prefabInimigo;
+
+            //chance entre 0 e 100%
+            float chance = Random.Range(0f, 100f);
+            //chance de 25% de criar o inimigo grande
+            if (chance <= 25)
+            {
+                prefabInimigo = this.inimigoGrandePrefab;
+            }
+            else
+            {
+                prefabInimigo = this.inimigoPequenoPrefab;
+            }
+
             //criar uma copia do prefab inimigo, na posiciao dele e sem rotação
-            Instantiate(this.inimigoOriginal, posicaoInimigo, Quaternion.identity);
+            Instantiate(prefabInimigo, posicaoInimigo, Quaternion.identity);
             this.tempoDecorrido = 0;
         }
     }

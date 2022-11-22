@@ -1,4 +1,4 @@
- using System.Collections;
+  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -91,7 +91,7 @@ public class NaveJogador : MonoBehaviour
         {
             Vida--;
             Inimigo inimigo = collider.GetComponent<Inimigo>();
-            inimigo.Destruir(false);
+            inimigo.ReceberDano();
         }
     }
 }

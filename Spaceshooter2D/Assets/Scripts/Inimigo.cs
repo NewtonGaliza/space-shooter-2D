@@ -7,6 +7,7 @@ public class Inimigo : MonoBehaviour
     public Rigidbody2D rigidbody;
     public float velocidadeMinima;
     public float velocidadeMaxima;
+    public int vidas; //quantidade de vida do inimigo
 
     private float velocidadeY;
 
@@ -33,6 +34,15 @@ public class Inimigo : MonoBehaviour
             NaveJogador jogador = GameObject.FindGameObjectWithTag("Player").GetComponent<NaveJogador>();
             jogador.Vida--;
             Destruir(false);
+        }
+    }
+
+    public void ReceberDano()
+    {
+        this.vidas--;
+        if(this.vidas <= 0)
+        {
+            Destruir(true);
         }
     }
 
