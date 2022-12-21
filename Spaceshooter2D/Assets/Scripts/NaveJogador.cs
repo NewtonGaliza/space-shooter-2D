@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NaveJogador : MonoBehaviour
 {
+    private const int QuantidadeMaximaVidas = 5; 
     [SerializeField] private Rigidbody2D rigidbody;
     public float velocidadeMovimento;
 
@@ -24,7 +25,7 @@ public class NaveJogador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.vidas = 5;
+        this.vidas = QuantidadeMaximaVidas;
         this.intervaloTiro = 0;  
         this.armaAtual = this.posicoesArmas[0];
         ControladorPontuacao.Pontuacao = 0;
@@ -79,7 +80,10 @@ public class NaveJogador : MonoBehaviour
         set
         {
             this.vidas = value;
-            if (this.vidas <= 0)
+            if (this.vidas > QuantidadeMaximaVidas)
+            {
+                this.vidas = QuantidadeMaximaVidas;
+            } else if (this.vidas <= 0)
             {
                 this.vidas = 0;
                 this.gameObject.SetActive(false);
@@ -95,6 +99,11 @@ public class NaveJogador : MonoBehaviour
             Vida--;
             Inimigo inimigo = collider.GetComponent<Inimigo>();
             inimigo.ReceberDano();
+        } else if (collider.CompareTag("ItemVida")) 
+        {
+            ItemVida itemVida = collider.GetComponent<ItemVida>();
+            Vida += itemVida.QuantidadeVidas;
+            itemVida.Coletar();
         }
     }
 

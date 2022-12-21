@@ -15,6 +15,10 @@ public class Inimigo : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [SerializeField] [Range(0, 100)] private float chanceSoltarItemVida;
+
+    [SerializeField] private ItemVida itemVidaPrefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +79,7 @@ public class Inimigo : MonoBehaviour
         if(derrotado)
         {
             ControladorPontuacao.Pontuacao++;
+            SoltarItemVida();
         }
 
         ParticleSystem particulaExplosao = Instantiate(this.particulaExplosaoPrefab, this.transform.position, Quaternion.identity);
@@ -92,4 +97,14 @@ public class Inimigo : MonoBehaviour
             return tamanho.x;
         }
     }
+
+    private void SoltarItemVida()
+    {
+        float chanceAleatoria = Random.Range(0f, 100f);
+        if (chanceAleatoria <= chanceSoltarItemVida)
+        {
+            Instantiate(this.itemVidaPrefab, this.transform.position, Quaternion.identity);
+        }
+    }
+
 }
