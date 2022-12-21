@@ -16,7 +16,28 @@ public static class ControladorPontuacao
             {
                 pontuacao = 0;
             }
+
+            if (pontuacao > MelhorPontuacao)
+            {
+                MelhorPontuacao = pontuacao;
+            }
+
         }
    }
 
+   public static int MelhorPontuacao
+   {
+        get
+        {
+            int melhorPontuacao = PlayerPrefs.GetInt("melhorPontuacao", 0);
+            return melhorPontuacao;
+        }
+        set
+        {
+            if (value > MelhorPontuacao)
+            {
+                PlayerPrefs.SetInt("melhorPontucao", value);
+            }
+        }
+   }
 }

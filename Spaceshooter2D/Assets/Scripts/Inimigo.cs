@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
     public Rigidbody2D rigidbody;
     public float velocidadeMinima;
     public float velocidadeMaxima;
@@ -13,6 +12,8 @@ public class Inimigo : MonoBehaviour
     private float velocidadeY;
 
     public ParticleSystem particulaExplosaoPrefab;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
 
     // Start is called before the first frame update

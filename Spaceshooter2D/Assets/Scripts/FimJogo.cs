@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class FimJogo : MonoBehaviour
 {
     [SerializeField] private Text textoPontuacao;
+    [SerializeField] private Text textMelhorPontuacao;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,10 @@ public class FimJogo : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         this.textoPontuacao.text = (ControladorPontuacao.Pontuacao + "x");
+        this.textMelhorPontuacao.text = ControladorPontuacao.MelhorPontuacao.ToString();
+
+        Debug.Log("Melhor pontucao" + ControladorPontuacao.MelhorPontuacao);
+
         // pausar o jogo
         Time.timeScale = 0;
     }
