@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     public Rigidbody2D rigidbody;
     public float velocidadeMinima;
     public float velocidadeMaxima;
@@ -13,10 +14,32 @@ public class Inimigo : MonoBehaviour
 
     public ParticleSystem particulaExplosaoPrefab;
 
+
     // Start is called before the first frame update
     void Start()
     {
         this.velocidadeY = Random.Range(this.velocidadeMinima, this.velocidadeMaxima);
+
+        Vector2 posicaoAtual = this.transform.position;
+        float metadeLargura = Largura / 2f;
+
+        float pontoReferenciaEsquerdo = posicaoAtual.x - metadeLargura;
+        float pontoRefereciaDireito = posicaoAtual.x + metadeLargura;
+
+        Camera camera = Camera.main;
+        Vector2 limiteInferiorEsquerdo = camera.ViewportToWorldPoint(Vector2.zero); //(0, 0)
+        Vector2 limiteSuperiorDireito = camera.ViewportToWorldPoint(Vector2.one); //(0, 1)
+
+        //saindo pela esquerda
+        if (pontoReferenciaEsquerdo < limiteInferiorEsquerdo.x)
+        {
+            float posicaoX = limiteInferiorEsquerdo.x + metadeLargura;
+            this.transform.position = new Vector2(posicaoX, posicaoAtual.y);
+        } else if (pontoRefereciaDireito > limiteSuperiorDireito.x)
+        {
+            float posicaoX = limiteSuperiorDireito.x - metadeLargura;
+            this.transform.position = new Vector2(posicaoX, posicaoAtual.y);
+        }
     }
 
     // Update is called once per frame
@@ -57,5 +80,15 @@ public class Inimigo : MonoBehaviour
         Destroy(particulaExplosao.gameObject, 1f); //destroi a particula aops 1 segundo
 
         Destroy(this.gameObject);
+    }
+
+    private float Largura
+    {
+        get
+        {
+            Bounds bounds = this.spriteRenderer.bounds;
+            Vector3 tamanho = bounds.size;
+            return tamanho.x;
+        }
     }
 }
