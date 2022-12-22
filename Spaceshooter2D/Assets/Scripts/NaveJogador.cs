@@ -8,17 +8,9 @@ public class NaveJogador : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody;
     public float velocidadeMovimento;
 
-    [SerializeField] private Laser laserPrefab;
-    private float intervaloTiro;
-
-    [SerializeField] private float tempoEsperaTiro;
-
     [SerializeField] private int vidas;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
-
-    public Transform[] posicoesArmas;
-    private Transform armaAtual;
 
     private FimJogo telaFimJogo;
 
@@ -26,10 +18,8 @@ public class NaveJogador : MonoBehaviour
     void Start()
     {
         this.vidas = QuantidadeMaximaVidas;
-        this.intervaloTiro = 0;  
-        this.armaAtual = this.posicoesArmas[0];
+        
         ControladorPontuacao.Pontuacao = 0;
-
         GameObject fimJogoGameObject = GameObject.FindGameObjectWithTag("TelaFimJogo");
         this.telaFimJogo = fimJogoGameObject.GetComponent<FimJogo>();
         this.telaFimJogo.Esconder();
@@ -42,33 +32,10 @@ public class NaveJogador : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector2(horizontal * velocidadeMovimento, vertical * velocidadeMovimento);
-
-        this.intervaloTiro += Time.deltaTime;
-
-        //atira a cada 1 segundo
-        if(this.intervaloTiro >= this.tempoEsperaTiro)
-        {
-            //reseta a contgem de tempo
-            this.intervaloTiro = 0;
-            Atirar();
-        }
-
         VerificarLimiteTela();   
     }
 
-    private void Atirar()
-    {
-        //criando o tio na mesma posição da nave
-        Instantiate(this.laserPrefab, this.armaAtual.position, Quaternion.identity);
-        if(this.armaAtual == this.posicoesArmas[0])
-        {
-            this.armaAtual = this.posicoesArmas[1];
-        } 
-        else
-        {
-            this.armaAtual = this.posicoesArmas[0];
-        }
-    }
+    
 
     public int Vida
     {
