@@ -14,6 +14,8 @@ public class NaveJogador : MonoBehaviour
 
     private FimJogo telaFimJogo;
 
+    [SerializeField] private ControladorArma controladorArma;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,8 @@ public class NaveJogador : MonoBehaviour
         GameObject fimJogoGameObject = GameObject.FindGameObjectWithTag("TelaFimJogo");
         this.telaFimJogo = fimJogoGameObject.GetComponent<FimJogo>();
         this.telaFimJogo.Esconder();
+
+        EquiparArmaDisparoAlternado();
     }
 
     // Update is called once per frame
@@ -63,16 +67,38 @@ public class NaveJogador : MonoBehaviour
     {
         if(collider.CompareTag("Inimigo"))
         {
-            Vida--;
             Inimigo inimigo = collider.GetComponent<Inimigo>();
-            inimigo.ReceberDano();
+            ColidirInimigo(inimigo);
         } else if (collider.CompareTag("ItemVida")) 
         {
             ItemVida itemVida = collider.GetComponent<ItemVida>();
-            Vida += itemVida.QuantidadeVidas;
-            itemVida.Coletar();
+            ColetarVida(itemVida);
+        } else if (collider.CompareTag("PowerUp"))
+        {
+            PowerUpColetavel powerUp = collider.GetComponent<PowerUpColetavel>();
+            ColetarPowerUp(powerUp);
         }
     }
+
+    private void ColidirInimigo(Inimigo inimigo)
+    {
+        Vida--;
+        inimigo.ReceberDano();
+    }
+    
+    private void ColetarVida(ItemVida itemVida)
+    {
+        Vida += itemVida.QuantidadeVidas;
+        itemVida.Coletar();
+    }
+
+    private void ColetarPowerUp(PowerUpColetavel powerUp)
+    {
+        EfeitoPowerUp efeitoPowerUp = powerUp.EfeitoPowerUp;
+        efeitoPowerUp.Aplicar(this);
+        powerUp.Coletar();
+    }
+
 
     private void VerificarLimiteTela()
     {
@@ -131,5 +157,15 @@ public class NaveJogador : MonoBehaviour
             Vector3 tamanho = bounds.size;
             return tamanho.y;
         }
+    }
+
+    public void EquiparArmaDisparoAlternado()
+    {
+        this.controladorArma.EquiparArmaDisparoAlternado();
+    }
+
+    public void EquiparArmaDisparoDuplo()
+    {
+        this.controladorArma.EquiparArmaDisparoDuplo();
     }
 }
