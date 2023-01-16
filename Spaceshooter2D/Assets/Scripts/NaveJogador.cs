@@ -15,6 +15,9 @@ public class NaveJogador : MonoBehaviour
     private FimJogo telaFimJogo;
 
     [SerializeField] private ControladorArma controladorArma;
+    [SerializeField] private Escudo escudo;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,8 @@ public class NaveJogador : MonoBehaviour
         this.telaFimJogo.Esconder();
 
         EquiparArmaDisparoAlternado();
+
+        this.escudo.Desativar();
     }
 
     // Update is called once per frame
@@ -82,7 +87,14 @@ public class NaveJogador : MonoBehaviour
 
     private void ColidirInimigo(Inimigo inimigo)
     {
-        Vida--;
+        if(this.escudo.Ativo)
+        {
+            this.escudo.DanoNoEscudo();
+        }
+        else
+        {
+            Vida--;
+        }
         inimigo.ReceberDano();
     }
     
@@ -167,5 +179,10 @@ public class NaveJogador : MonoBehaviour
     public void EquiparArmaDisparoDuplo()
     {
         this.controladorArma.EquiparArmaDisparoDuplo();
+    }
+
+    public void AtivarEscudo()
+    {
+        this.escudo.Ativar();
     }
 }
