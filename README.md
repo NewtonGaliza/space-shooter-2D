@@ -23,3 +23,4 @@ Space Shooter 2D
 - Part 21.1 :heavy_check_mark:
 - Part 22 :heavy_check_mark:
 - Part 23 :heavy_check_mark:
+- Part 24 :heavy_check_mark:
