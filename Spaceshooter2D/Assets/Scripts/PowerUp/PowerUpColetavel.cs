@@ -12,6 +12,8 @@ public abstract class PowerUpColetavel : MonoBehaviour
     [SerializeField] private int quantidadeTotalPiscadas;
     [SerializeField] private float reducaoTempoEntrePiscadas;
 
+    [SerializeField] private float duracaoEmSegundos;
+
     public abstract EfeitoPowerUp EfeitoPowerUp { get; }
 
     private void Start()
@@ -58,6 +60,15 @@ public abstract class PowerUpColetavel : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+
+    public float DuracaoEmSegundos
+    {
+        get
+        {
+            return this.duracaoEmSegundos;
+        }
+    }
+
 
 
 }

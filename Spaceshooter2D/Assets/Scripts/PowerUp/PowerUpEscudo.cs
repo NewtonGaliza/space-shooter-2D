@@ -8,7 +8,7 @@ public class PowerUpEscudo : PowerUpColetavel
     {
         get
         {
-            return new EfeitoPowerUpEscudo();
+            return new EfeitoPowerUpEscudo(DuracaoEmSegundos);
         }
     }
 }

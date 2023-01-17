@@ -17,6 +17,8 @@ public class NaveJogador : MonoBehaviour
     [SerializeField] private ControladorArma controladorArma;
     [SerializeField] private Escudo escudo;
 
+    private EfeitoPowerUp powerUpAtual;
+
 
 
     // Start is called before the first frame update
@@ -41,7 +43,17 @@ public class NaveJogador : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector2(horizontal * velocidadeMovimento, vertical * velocidadeMovimento);
-        VerificarLimiteTela();   
+        VerificarLimiteTela(); 
+
+        if(this.powerUpAtual != null)
+        {
+            this.powerUpAtual.Atualizar();
+            if(!this.powerUpAtual.Ativo)
+            {
+                this.powerUpAtual.Remover(this);
+                this.powerUpAtual = null;
+            }
+        }  
     }
 
     
@@ -106,8 +118,14 @@ public class NaveJogador : MonoBehaviour
 
     private void ColetarPowerUp(PowerUpColetavel powerUp)
     {
+        if(this.powerUpAtual != null)
+        {
+            this.powerUpAtual.Remover(this);
+        }
+
         EfeitoPowerUp efeitoPowerUp = powerUp.EfeitoPowerUp;
         efeitoPowerUp.Aplicar(this);
+        this.powerUpAtual = efeitoPowerUp;
         powerUp.Coletar();
     }
 
@@ -184,5 +202,10 @@ public class NaveJogador : MonoBehaviour
     public void AtivarEscudo()
     {
         this.escudo.Ativar();
+    }
+
+    public void DesativarEscudo()
+    {
+        this.escudo.Desativar();
     }
 }

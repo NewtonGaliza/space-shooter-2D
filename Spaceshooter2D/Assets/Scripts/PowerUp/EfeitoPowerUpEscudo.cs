@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class EfeitoPowerUpEscudo : EfeitoPowerUp
 {
+    //metodo construtor
+    public EfeitoPowerUpEscudo(float duracaoEmSegundos) : base(duracaoEmSegundos)
+    {
+
+    }
+
+
     public override void Aplicar(NaveJogador jogador)
     {
         jogador.AtivarEscudo();
+    }
+
+    public override void Remover(NaveJogador jogador)
+    {
+        jogador.DesativarEscudo();
     }
 }
