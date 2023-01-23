@@ -128,7 +128,6 @@ MonoBehaviour:
   itemVidaPrefab: {fileID: 4341652390108958004, guid: 1fa918471ad2a2744b7d8b31a975da22, type: 3}
   chanceSoltarPowerUp: 100
   powerUpPrefabs:
-  - {fileID: 7349696066463716459, guid: 26cceda83585a6d48b7a7d4e945505a6, type: 3}
   - {fileID: 7663520379471188533, guid: 209e67b11c994c14c8483b9f173e812e, type: 3}
   - {fileID: 3746600742311529070, guid: 8c12a35735063614bb2580fcfe35ad38, type: 3}
 --- !u!58 &3846574485024941792

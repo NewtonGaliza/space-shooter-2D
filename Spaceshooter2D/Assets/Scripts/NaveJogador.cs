@@ -32,9 +32,7 @@ public class NaveJogador : MonoBehaviour
         this.telaFimJogo = fimJogoGameObject.GetComponent<FimJogo>();
         this.telaFimJogo.Esconder();
 
-        //EquiparArmaDisparoAlternado();
-
-        EquiparArmaDisparoEspalhado();
+        EquiparArmaDisparoAlternado();
 
         this.escudo.Desativar();
     }

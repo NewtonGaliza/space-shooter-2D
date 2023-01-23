@@ -1185,7 +1185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &875210850
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,8 +1216,8 @@ MonoBehaviour:
   tempoEsperaTiro: 0.15
   posicoesDisparo:
   - {fileID: 1106219577}
-  quantidadeDisparos: 2
-  anguloEntreDisparos: 5
+  quantidadeDisparos: 5
+  anguloEntreDisparos: 3
 --- !u!1 &933976722
 GameObject:
   m_ObjectHideFlags: 0

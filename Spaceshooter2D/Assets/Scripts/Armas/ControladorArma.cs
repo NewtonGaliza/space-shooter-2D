@@ -13,22 +13,9 @@ public class ControladorArma : MonoBehaviour
     {
         this.armaDisparoAlternado.Desativar();
         this.armaDisparoDuplo.Desativar();
+        this.armaDisparoEspalhado.Desativar();
     }
 
-
-#region START|UPDATE
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-#endregion
 
     private ArmaBasica ArmaAtual
     {
