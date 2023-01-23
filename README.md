@@ -27,3 +27,4 @@ Space Shooter 2D
 - Part 25 :heavy_check_mark:
 - Part 26 :heavy_check_mark:
 - Part 27 :heavy_check_mark:
+- Part 28 :heavy_check_mark:
