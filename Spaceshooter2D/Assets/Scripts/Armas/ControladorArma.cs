@@ -6,6 +6,7 @@ public class ControladorArma : MonoBehaviour
 {
     [SerializeField] private ArmaDisparoAlternado armaDisparoAlternado;
     [SerializeField] private ArmaDisparoDuplo armaDisparoDuplo;
+    [SerializeField] private ArmaDisparoEspalhado armaDisparoEspalhado;
     private ArmaBasica armaAtual;
 
     private void Awake()
@@ -14,6 +15,8 @@ public class ControladorArma : MonoBehaviour
         this.armaDisparoDuplo.Desativar();
     }
 
+
+#region START|UPDATE
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class ControladorArma : MonoBehaviour
     {
         
     }
+#endregion
 
     private ArmaBasica ArmaAtual
     {
@@ -47,5 +51,10 @@ public class ControladorArma : MonoBehaviour
     public void EquiparArmaDisparoDuplo()
     {
         this.ArmaAtual = this.armaDisparoDuplo;
+    }
+
+    public void EquiparArmaDisparoEspalhado()
+    {
+        this.ArmaAtual = this.armaDisparoEspalhado;
     }
 }

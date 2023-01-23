@@ -10,7 +10,9 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.rigidbody.velocity = new Vector2(0, this.velocidadeY);
+        // this.rigidbody.velocity = new Vector2(0, this.velocidadeY);
+
+        Direcao = this.transform.up;
     }
 
     // Update is called once per frame
@@ -35,4 +37,18 @@ public class Laser : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+
+    //usado para a rotacao dos tiros o disparo espalhado
+    public Vector2 Direcao
+    {
+        set
+        {
+            this.transform.up = value;
+            
+            //usado na aula #27
+            this.rigidbody.velocity = this.transform.up * this.velocidadeY;
+        }
+    }
+
 }

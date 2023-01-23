@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NaveJogador : MonoBehaviour
 {
-    private const int QuantidadeMaximaVidas = 5; 
+    //5 vidas maximas no original
+    private const int QuantidadeMaximaVidas = 5000; 
     [SerializeField] private Rigidbody2D rigidbody;
     public float velocidadeMovimento;
 
@@ -31,7 +32,9 @@ public class NaveJogador : MonoBehaviour
         this.telaFimJogo = fimJogoGameObject.GetComponent<FimJogo>();
         this.telaFimJogo.Esconder();
 
-        EquiparArmaDisparoAlternado();
+        //EquiparArmaDisparoAlternado();
+
+        EquiparArmaDisparoEspalhado();
 
         this.escudo.Desativar();
     }
@@ -197,6 +200,11 @@ public class NaveJogador : MonoBehaviour
     public void EquiparArmaDisparoDuplo()
     {
         this.controladorArma.EquiparArmaDisparoDuplo();
+    }
+
+    public void EquiparArmaDisparoEspalhado()
+    {
+        this.controladorArma.EquiparArmaDisparoEspalhado();
     }
 
     public void AtivarEscudo()

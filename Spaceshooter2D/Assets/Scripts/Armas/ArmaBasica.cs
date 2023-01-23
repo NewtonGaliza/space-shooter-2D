@@ -26,9 +26,9 @@ public abstract class ArmaBasica : MonoBehaviour
         }
     }
 
-    protected void CriarLaser(Vector2 posicao)
+    protected Laser CriarLaser(Vector2 posicao)
     {
-        Instantiate(this.laserPrefab, posicao, Quaternion.identity);
+        return Instantiate(this.laserPrefab, posicao, Quaternion.identity);
     }    
 
     protected abstract void Atirar();
