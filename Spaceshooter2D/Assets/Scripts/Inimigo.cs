@@ -86,6 +86,9 @@ public class Inimigo : MonoBehaviour
             SoltarPowerUp();
         }
 
+        ControladorAudio controladorAudio = GameObject.FindObjectOfType<ControladorAudio>();
+        controladorAudio.TocarSomExplosaoInimigo();
+
         ParticleSystem particulaExplosao = Instantiate(this.particulaExplosaoPrefab, this.transform.position, Quaternion.identity);
         Destroy(particulaExplosao.gameObject, 1f); //destroi a particula aops 1 segundo
 

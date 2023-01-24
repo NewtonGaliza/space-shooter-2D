@@ -18,6 +18,9 @@ public class ItemVida : MonoBehaviour
 
     public void Coletar()
     {
+        ControladorAudio controladorAudio = GameObject.FindObjectOfType<ControladorAudio>();
+        controladorAudio.TocarSomVidaColetada();
+
         //cria, exibe e destroi a particula
         ParticleSystem particula = Instantiate(this.particulaPrefab, this.transform.position, Quaternion.identity);
         Destroy(particula.gameObject, 1f);

@@ -12,6 +12,8 @@ public class Laser : MonoBehaviour
     {
         // this.rigidbody.velocity = new Vector2(0, this.velocidadeY);
 
+        ControladorAudio controladorAudio = GameObject.FindObjectOfType<ControladorAudio>();
+        controladorAudio.TocarSomLaser();
         Direcao = this.transform.up;
     }
 

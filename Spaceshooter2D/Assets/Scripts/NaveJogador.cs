@@ -20,6 +20,8 @@ public class NaveJogador : MonoBehaviour
 
     private EfeitoPowerUp powerUpAtual;
 
+    private ControladorAudio controladorAudio;
+
 
 
     // Start is called before the first frame update
@@ -35,6 +37,8 @@ public class NaveJogador : MonoBehaviour
         EquiparArmaDisparoAlternado();
 
         this.escudo.Desativar();
+
+        this.controladorAudio = GameObject.FindObjectOfType<ControladorAudio>();
     }
 
     // Update is called once per frame
@@ -77,6 +81,8 @@ public class NaveJogador : MonoBehaviour
                 this.vidas = 0;
                 this.gameObject.SetActive(false);
                 telaFimJogo.Exibir();
+
+                this.controladorAudio.TocarSomDerrotaJogador();
             }
         }
     }
@@ -99,13 +105,15 @@ public class NaveJogador : MonoBehaviour
     }
 
     private void ColidirInimigo(Inimigo inimigo)
-    {
+    {      
         if(this.escudo.Ativo)
         {
+            controladorAudio.TocarSomDanoEscudo();
             this.escudo.DanoNoEscudo();
         }
         else
         {
+            controladorAudio.TocarSomDanoJogador();
             Vida--;
         }
         inimigo.ReceberDano();
