@@ -15,4 +15,9 @@ public class TelaPause : MonoBehaviour
         Time.timeScale = 1;
         this.gameObject.SetActive(false);
     }
+
+    public void Sair()
+    {
+        Application.Quit();
+    }
 }
